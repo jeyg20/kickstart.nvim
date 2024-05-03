@@ -28,6 +28,7 @@ vim.opt.breakindent = true
 
 -- Save undo history
 vim.opt.swapfile = false
+vim.opt.backup = false
 vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.opt.undofile = true
 
@@ -62,8 +63,15 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = false
+
+-- Allow the serach of files with @ and -
+vim.opt.isfname:append '@-@'
+
+vim.opt.textwidth = 120
+vim.opt.colorcolumn = '+1'
+vim.opt.termguicolors = true
+vim.cmd [[ 
+  hi ColorColumn ctermbg=gray guibg=gray 
+]]
