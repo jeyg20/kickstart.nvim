@@ -69,6 +69,8 @@ vim.opt.hlsearch = false
 -- Allow the serach of files with @ and -
 vim.opt.isfname:append '@-@'
 
+vim.opt.wrap = true
+vim.api.nvim_win_set_option(0, 'breakindent', true)
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = '+1'
 vim.opt.termguicolors = true
