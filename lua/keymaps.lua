@@ -64,3 +64,15 @@ vim.api.nvim_create_autocmd('CursorHold', {
     vim.diagnostic.open_float(nil, { scope = 'line', border = 'rounded' })
   end,
 })
+
+vim.keymap.set('n', '<leader>tc', function()
+  if vim.bo.filetype == 'python' then
+    require('dap-python').test_class()
+  end
+end)
+
+vim.keymap.set('n', '<leader>tm', function()
+  if vim.bo.filetype == 'python' then
+    require('dap-python').test_method()
+  end
+end)
