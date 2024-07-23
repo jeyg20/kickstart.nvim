@@ -1,8 +1,8 @@
 return {
-  -- add dracula
   {
     'Mofiqul/dracula.nvim',
-    -- Configure LazyVim to load dracula
+    name = 'dracula',
+    priority = 1000,
     config = function()
       local dracula = require 'dracula'
       dracula.setup {
@@ -33,35 +33,22 @@ return {
           white = '#ABB2BF',
           black = '#191A21',
         },
-        -- show the '~' characters after the end of buffers
-        show_end_of_buffer = true, -- default false
-        -- use transparent background
-        transparent_bg = true, -- default false
-        -- set custom lualine background color
-        lualine_bg_color = '#44475a', -- default nil
-        -- set italic comment
-        italic_comment = true, -- default false
-        -- overrides the default highlights with table see `:h synIDattr`
+        show_end_of_buffer = true,
+        transparent_bg = true,
+        lualine_bg_color = '#44475a',
+        italic_comment = true,
         overrides = {},
-        -- You can use overrides as table like this
-        -- overrides = {
-        --   NonText = { fg = "white" }, -- set NonText fg to white
-        --   NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-        --   Nothing = {} -- clear highlight of Nothing
-        -- },
-        -- Or you can also use it like a function to get color from theme
-        -- overrides = function (colors)
-        --   return {
-        --     NonText = { fg = colors.white }, -- set NonText fg to white of theme
-        --   }
-        -- end,
       }
     end,
-  },
-  {
-    'LazyVim/LazyVim',
-    opts = {
-      colorscheme = 'dracula',
-    },
+
+    init = function()
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      vim.cmd.colorscheme 'dracula'
+
+      -- You can configure highlights by doing something like:
+      vim.cmd.hi 'Comment gui=none'
+    end,
   },
 }

@@ -35,7 +35,17 @@ require('lazy').setup({
 
   require 'kickstart/plugins/blink-cmp',
 
-  require 'kickstart/plugins/tokyonight',
+  require 'kickstart/plugins/debug',
+
+  require 'kickstart/plugins/autopairs',
+
+  require 'kickstart/plugins/indent_line',
+
+  require 'kickstart/plugins/lint',
+
+  -- require 'kickstart/plugins/neo-tree',
+
+  -- require 'kickstart/plugins/tokyonight',
 
   require 'kickstart/plugins/todo-comments',
 
@@ -43,7 +53,23 @@ require('lazy').setup({
 
   require 'kickstart/plugins/treesitter',
 
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
+  require 'custom/plugins/harpoon',
+
+  require 'custom/plugins/colorScheme',
+
+  require 'custom/plugins/colorizer',
+
+  require 'custom/plugins/fugitive',
+
+  require 'custom/plugins/mdPreview',
+
+  require 'custom/plugins/typescript-tools',
+
+  require 'custom/plugins/undotree',
+
+  require 'custom/plugins/venvSelector',
+
+  -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
 

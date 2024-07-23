@@ -4,8 +4,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
-vim.g.python3_host_prog = './env/bin/python3.11'
 
+vim.g.python3_host_prog = '/home/jeison/anaconda3/envs/env/bin/python'
+
+-- [[ Setting options ]]
 require 'options'
 require 'keymaps'
 require 'lazy-bootstrap'
