@@ -40,13 +40,39 @@ require('lazy').setup({
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/tokyonight',
+  require 'kickstart/plugins/debug',
+
+  require 'kickstart/plugins/autopairs',
+
+  require 'kickstart/plugins/indent_line',
+
+  require 'kickstart/plugins/lint',
+
+  -- require 'kickstart/plugins/neo-tree',
+
+  -- require 'kickstart/plugins/tokyonight',
 
   require 'kickstart/plugins/todo-comments',
 
   require 'kickstart/plugins/mini',
 
   require 'kickstart/plugins/treesitter',
+
+  require 'custom/plugins/harpoon',
+
+  require 'custom/plugins/colorScheme',
+
+  require 'custom/plugins/colorizer',
+
+  require 'custom/plugins/fugitive',
+
+  require 'custom/plugins/mdPreview',
+
+  require 'custom/plugins/typescript-tools',
+
+  require 'custom/plugins/undotree',
+
+  require 'custom/plugins/venvSelector',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
