@@ -40,6 +40,8 @@ return {
         'mypy',
         'pylint',
       }
+      lint.linters_by_ft['html'] = { 'djlint' }
+      lint.linters_by_ft['htmldjango'] = { 'djlint' }
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
