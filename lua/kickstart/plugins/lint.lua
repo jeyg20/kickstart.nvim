@@ -35,6 +35,12 @@ return {
       lint.linters_by_ft['ruby'] = nil
       lint.linters_by_ft['terraform'] = nil
       lint.linters_by_ft['text'] = nil
+
+      -- Configure python linters with options to ignore missing docstring warnings
+      lint.linters.pylint.args = {
+        '--load-plugins=pylint_django',
+        '--django-settings-module=myproject.settings',
+      }
       lint.linters_by_ft['python'] = {
         'flake8',
         'mypy',
