@@ -43,7 +43,7 @@ return {
       }
       lint.linters_by_ft['python'] = {
         'flake8',
-        'mypy',
+        --        'mypy',
         'pylint',
       }
       lint.linters_by_ft['html'] = { 'djlint' }
