@@ -205,6 +205,6 @@ return {
       },
     }
 
-    require('dap-python').setup '~/anaconda3/envs/env/bin/python'
+    --require('dap-python').setup '~/anaconda3/envs/conda_env/bin/python'
   end,
 }
