@@ -41,12 +41,16 @@ return {
         '--load-plugins=pylint_django',
         '--django-settings-module=myproject.settings',
       }
+
+      lint.linters.flake8.args = {
+        '--ignore:E501',
+      }
+
       lint.linters_by_ft['python'] = {
         'flake8',
-        --        'mypy',
         'pylint',
       }
-      lint.linters_by_ft['html'] = { 'djlint' }
+      -- lint.linters_by_ft['html'] = { 'djlint', 'prettierd', 'prettier' }
       lint.linters_by_ft['htmldjango'] = { 'djlint' }
 
       -- Create autocommand which carries out the actual linting
