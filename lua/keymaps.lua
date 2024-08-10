@@ -48,11 +48,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-  pattern = { '*.html', '*.htm' },
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.html' },
   callback = function()
-    if vim.fn.search('{{.\\+}}', 'nw') > 0 or vim.fn.search('{%.\\+%}', 'nw') > 0 then
+    if vim.fn.search '{%' > 0 or vim.fn.search '{{' > 0 then
       vim.bo.filetype = 'htmldjango'
+    else
+      vim.bo.filetype = 'html'
     end
   end,
 })

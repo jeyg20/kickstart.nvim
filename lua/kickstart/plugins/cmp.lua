@@ -23,6 +23,7 @@ return {
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip').filetype_extend('htmldjango', { 'html' })
             end,
           },
         },
@@ -34,6 +35,8 @@ return {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-omni',
     },
     config = function()
       -- See `:help cmp`
@@ -101,12 +104,23 @@ return {
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
-        sources = {
+        sources = cmp.config.sources {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
         },
       }
+
+      -- Setup cmp for specific filetypes
+      cmp.setup.filetype('htmldjango', {
+        sources = cmp.config.sources {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'buffer' },
+          { name = 'omni' },
+        },
+      })
     end,
   },
 }
