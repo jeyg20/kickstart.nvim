@@ -35,23 +35,22 @@ return {
       lint.linters_by_ft['ruby'] = nil
       lint.linters_by_ft['terraform'] = nil
       lint.linters_by_ft['text'] = nil
-
-      -- Configure python linters with options to ignore missing docstring warnings
-      lint.linters.pylint.args = {
-        '--load-plugins=pylint_django',
-        '--django-settings-module=myproject.settings',
-      }
-
-      lint.linters.flake8.args = {
-        '--ignore:E501',
-      }
-
       lint.linters_by_ft['python'] = {
         'flake8',
         'pylint',
       }
       -- lint.linters_by_ft['html'] = { 'djlint', 'prettierd', 'prettier' }
       lint.linters_by_ft['htmldjango'] = { 'djlint' }
+
+      -- Configure python linters with options to ignore missing docstring warnings
+      lint.linters.pylint.args = {
+        '--load-plugins=pylint_django',
+        '--outpu-format=json',
+      }
+
+      lint.linters.flake8.args = {
+        '--ignore:E501',
+      }
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
