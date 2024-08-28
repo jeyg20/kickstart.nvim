@@ -5,11 +5,22 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      -- To allow other plugins to add linters to require('lint').linters_by_ft,
-      -- instead set linters_by_ft like this:
-      lint.linters_by_ft = lint.linters_by_ft or {}
-      lint.linters_by_ft['markdown'] = { 'markdownlint' }
-      --
+      lint.linters_by_ft = {
+        python = { 'flake8', 'pylint' },
+        markdown = { 'markdownlint' },
+        htmldjango = { 'djlint' },
+      }
+
+      lint.linters.flake8.args = lint.linters.flake8.args or {}
+      vim.list_extend(lint.linters.flake8.args, {
+        '--max-line-length=100',
+        '--ignore=E501,D100,D101,D102,D103,D105,D107',
+      })
+
+      lint.linters.pylint.args = lint.linters.pylint.args or {}
+      vim.list_extend(lint.linters.pylint.args, {
+        '--load-plugins=pylint_django',
+      })
       -- However, note that this will enable a set of default linters,
       -- which will cause errors unless these tools are available:
       -- {
@@ -24,7 +35,6 @@ return {
       --   terraform = { "tflint" },
       --   text = { "vale" }
       -- }
-      --
       -- You can disable the default linters by setting their filetypes to nil:
       lint.linters_by_ft['clojure'] = nil
       lint.linters_by_ft['dockerfile'] = nil
@@ -35,25 +45,7 @@ return {
       lint.linters_by_ft['ruby'] = nil
       lint.linters_by_ft['terraform'] = nil
       lint.linters_by_ft['text'] = nil
-      lint.linters_by_ft['python'] = {
-        'flake8',
-        'pylint',
-      }
-      -- lint.linters_by_ft['html'] = { 'djlint', 'prettierd', 'prettier' }
-      lint.linters_by_ft['htmldjango'] = { 'djlint' }
 
-      -- Configure python linters with options to ignore missing docstring warnings
-      lint.linters.pylint.args = {
-        '--load-plugins=pylint_django',
-        '--outpu-format=json',
-      }
-
-      lint.linters.flake8.args = {
-        '--ignore:E501',
-      }
-
-      -- Create autocommand which carries out the actual linting
-      -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
