@@ -31,13 +31,16 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-omni',
       'onsails/lspkind-nvim',
+      'f3fora/cmp-spell',
     },
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       local lspkind = require 'lspkind'
 
-      luasnip.config.setup {}
+      luasnip.config.setup {
+        updateenvents = 'TextChanged, TextChangedI',
+      }
 
       cmp.setup {
         snippet = {
@@ -55,6 +58,12 @@ return {
             maxwidth = 50,
             ellipsis_char = '...',
             expandable_indicator = '⋯',
+            menu = {
+              buffer = '[Buffer]',
+              nvim_lsp = '[LSP]',
+              luasnip = '[Snippet]',
+              path = '[Path]',
+            },
           },
         },
         mapping = cmp.mapping.preset.insert {
@@ -76,10 +85,23 @@ return {
           end, { 'i', 's' }),
         },
         sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'nvim_lsp' },
           { name = 'path' },
           { name = 'buffer' },
+          { name = 'nvim_lua' },
+          { name = 'omni' },
+          {
+            name = 'spell',
+            option = {
+              keep_all_entries = false,
+              enable_in_context = function()
+                local context = require 'cmp.config.context'
+                return not context.in_treesitter_capture 'comment' and not context.in_treesitter_capture 'string'
+              end,
+              preselect_correct_word = true,
+            },
+          },
         },
       }
 
@@ -88,8 +110,8 @@ return {
         sources = cmp.config.sources(vim.list_extend({
           { name = 'omni' },
         }, {
-          { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'nvim_lsp' },
           { name = 'path' },
           { name = 'buffer' },
         })),
