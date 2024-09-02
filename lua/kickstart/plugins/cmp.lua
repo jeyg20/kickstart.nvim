@@ -31,7 +31,6 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-omni',
       'onsails/lspkind-nvim',
-      'f3fora/cmp-spell',
     },
     config = function()
       local cmp = require 'cmp'
@@ -91,17 +90,6 @@ return {
           { name = 'buffer' },
           { name = 'nvim_lua' },
           { name = 'omni' },
-          {
-            name = 'spell',
-            option = {
-              keep_all_entries = false,
-              enable_in_context = function()
-                local context = require 'cmp.config.context'
-                return not context.in_treesitter_capture 'comment' and not context.in_treesitter_capture 'string'
-              end,
-              preselect_correct_word = true,
-            },
-          },
         },
       }
 

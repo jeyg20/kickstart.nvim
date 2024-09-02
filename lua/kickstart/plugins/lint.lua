@@ -6,7 +6,7 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        python = { 'flake8', 'pylint' },
+        python = { 'flake8' },
         markdown = { 'markdownlint' },
         htmldjango = { 'djlint' },
       }
@@ -17,10 +17,6 @@ return {
         '--ignore=E501,D100,D101,D102,D103,D105,D107',
       })
 
-      lint.linters.pylint.args = lint.linters.pylint.args or {}
-      vim.list_extend(lint.linters.pylint.args, {
-        '--load-plugins=pylint_django',
-      })
       -- However, note that this will enable a set of default linters,
       -- which will cause errors unless these tools are available:
       -- {
