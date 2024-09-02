@@ -210,9 +210,7 @@ return {
       local servers = {
         html = {
           filetypes = { 'html', 'htmldjango' }, -- Ensure both file types are supported
-          settings = {
-            -- Your HTML LSP settings
-          },
+          settings = {},
         },
         -- clangd = {},
         -- gopls = {},
