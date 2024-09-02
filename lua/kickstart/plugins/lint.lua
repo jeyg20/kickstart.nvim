@@ -13,7 +13,7 @@ return {
 
       lint.linters.flake8.args = lint.linters.flake8.args or {}
       vim.list_extend(lint.linters.flake8.args, {
-        '--max-line-length=100',
+        '--max-line-length=79',
         '--ignore=E501,D100,D101,D102,D103,D105,D107',
       })
 
