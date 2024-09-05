@@ -14,7 +14,7 @@ return {
       lint.linters.flake8.args = lint.linters.flake8.args or {}
       vim.list_extend(lint.linters.flake8.args, {
         '--max-line-length=79',
-        '--ignore=E501,D100,D101,D102,D103,D105,D107',
+        '--ignore=E501,D100,D101,D102,D103,D105,D107,W503',
       })
 
       -- However, note that this will enable a set of default linters,
