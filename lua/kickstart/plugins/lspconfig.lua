@@ -211,7 +211,6 @@ return {
         -- clangd = {},
         -- gopls = {},
         pylsp = {},
-        -- pyright = { cmd = { 'pyright-langserver', '--stdio' },},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
