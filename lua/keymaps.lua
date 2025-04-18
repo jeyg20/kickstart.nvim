@@ -84,3 +84,17 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 -- Move selected lines up & down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Map <leader>xh to view buffer as hex with xxd
+vim.keymap.set('n', '<Leader>xh', ':%!xxd<CR>', {
+  noremap = true, -- Non-recursive mapping
+  silent = true, -- Don't echo the command
+  desc = 'View buffer as hex (xxd)', -- Description for which-key etc.
+})
+
+-- Map <leader>xr to revert buffer from hex with xxd -r
+vim.keymap.set('n', '<Leader>xr', ':%!xxd -r<CR>', {
+  noremap = true,
+  silent = true,
+  desc = 'Revert buffer from hex (xxd -r)',
+})

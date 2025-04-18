@@ -62,8 +62,9 @@ return {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      },
-    },
+        { '<leader>x', group = '[X]hex' },
+      }
+    end,
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
