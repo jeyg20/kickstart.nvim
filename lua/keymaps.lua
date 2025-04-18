@@ -85,6 +85,23 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Join lines but keep cursor in place with J
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Scroll down/up half a page and center cursor
+vim.keymap.set('n', '<C-k>', '<C-d>zz')
+vim.keymap.set('n', '<C-j>', '<C-u>zz')
+
+-- Next/previous search result and center cursor
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Restart LSP server with <leader>zig
+vim.keymap.set('n', '<leader>lsp', '<cmd>LspRestart<cr>')
+
+-- "Greatest remap ever": paste over selection without yanking it
+vim.keymap.set('x', '<leader>p', [["_dP]])
+
 -- Map <leader>xh to view buffer as hex with xxd
 vim.keymap.set('n', '<Leader>xh', ':%!xxd<CR>', {
   noremap = true, -- Non-recursive mapping

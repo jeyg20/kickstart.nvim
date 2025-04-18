@@ -208,21 +208,10 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        html = {
-          filetypes = { 'html', 'htmldjango' }, -- Ensure both file types are supported
-          settings = {},
-        },
         -- clangd = {},
         -- gopls = {},
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                typeCheckingMode = 'basic',
-              },
-            },
-          },
-        },
+        pylsp = {},
+        -- pyright = { cmd = { 'pyright-langserver', '--stdio' },},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -285,4 +274,5 @@ return {
     end,
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et
