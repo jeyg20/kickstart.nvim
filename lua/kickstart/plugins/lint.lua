@@ -6,16 +6,16 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        python = { 'flake8', 'mypy' },
-        markdown = { 'markdownlint' },
-        htmldjango = { 'djlint' },
+        python = {},
+        --   markdown = { 'markdownlint' },
+        --   htmldjango = { 'djlint' },
       }
 
-      lint.linters.flake8.args = lint.linters.flake8.args or {}
-      vim.list_extend(lint.linters.flake8.args, {
-        '--max-line-length=120',
-        '--ignore=E501,D100,D101,D102,D103,D105,D107,W503',
-      })
+      -- lint.linters.flake8.args = lint.linters.flake8.args or {}
+      -- vim.list_extend(lint.linters.flake8.args, {
+      --   '--max-line-length=120',
+      --   '--ignore=E501,D100,D101,D102,D103,D105,D107,W503',
+      -- })
 
       -- However, note that this will enable a set of default linters,
       -- which will cause errors unless these tools are available:

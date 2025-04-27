@@ -210,7 +210,36 @@ return {
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        pylsp = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              -- Explicitly disable all known style-related plugins
+              plugins = {
+                pycodestyle = { enabled = true, maxLineLength = 120 },
+                flake8 = { enabled = true, ignore = { 'E501', 'D100', 'D101', 'D102', 'D103', 'D105', 'D107', 'W503' } },
+                mypy = { enabled = true },
+                yapf = { enabled = true },
+                black = { enabled = true },
+                isort = { enabled = true },
+                pylint = { enabled = false, ignore = { 'C0114', 'C0115', 'C0116' } },
+                pyflakes = { enabled = true },
+                autopep8 = { enabled = true },
+              },
+              -- Try setting these to empty or nil to prevent fallback or config source issues
+              -- configurationSources = {}, -- Set to empty table
+              -- disable_format_on_type = true, -- Example: explicitly disable formatting on type if it exists
+
+              -- Check for any other top-level style/diagnostic settings in pylsp
+              -- (Refer to pylsp documentation for root-level settings)
+              -- diagnostics = {
+              --   enabled = false, -- Example: Try disabling all diagnostics if such a setting exists
+              -- },
+              -- lint = {
+              --   enabled = false, -- Example: Try disabling all linting if such a setting exists
+              -- },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -253,10 +282,11 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
+        --'mypy', -- Keep mypy here if you want Mason to install it (used by Pylsp)
+        'markdownlint',
+        'black', -- Ensure black is in this list if you want it installed by mason-tool-installer
+        'isort', -- Ensure isort is in this list if you want it installed by mason-tool-installer
         'flake8',
-        'mypy',
-        'black',
-        'isort',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
