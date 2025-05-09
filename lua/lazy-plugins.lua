@@ -71,6 +71,8 @@ require('lazy').setup({
 
   require 'custom/plugins/django-plus',
 
+  require 'custom/plugins/timeTracker',
+
   --require 'custom/plugins/dbext.lua',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
