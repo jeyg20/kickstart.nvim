@@ -67,7 +67,7 @@ require('lazy').setup({
 
   require 'custom/plugins/undotree',
 
-  -- require 'custom/plugins/venvSelector',
+  require 'custom/plugins/venvSelector',
 
   require 'custom/plugins/django-plus',
 
